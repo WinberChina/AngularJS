@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app="expanderModule">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        
+        <link rel="stylesheet" type="text/css" href="css/Accordion.css"/>
+    </head>
+    <body ng-controller='SomeController' >
+        <accordion>
+            <expander class='expander' ng-repeat='expander in expanders' expander-title='expander.title'>
+                {{expander.text}}
+            </expander>
+        </accordion>
+    </body>
+    <script src="js/angular/angular.min.js"></script>
+    <script src="js/Accordion.js"></script>
+</html>
