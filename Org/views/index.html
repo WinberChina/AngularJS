@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!--<div ng-controller='MyController'>
+			Your name:
+			<input type="text" ng-model="username"  />
+			<button type="button" ng-click="sayHello()">greet</button>
+			<hr />
+			{{greeting}}
+		</div>-->
+		<!-- scope hierarchies
+		<div class="show-scope-demo">
+			<div ng-controller="GreetController">
+				Hello {{name}}!
+			</div>
+			<div ng-controller="ListController">
+				<ol>
+					<li ng-repeat="name in names">
+						{{name}} from {{department}}
+					</li>
+				</ol>
+			</div>-->
+			
+			<div ng-controller="EventController">
+				Root scope <tt>MyEvent</tt> count: {{count}}
+				<ul>
+					<li ng-repeat="i in [1]" ng-controller="EventController">
+						<button ng-click="$emit('MyEvent')">$emit('MyEvnet')</button>
+						<button ng-click="$broadcast('MyEvent')">$broadcast('MyEvent')</button>
+						<br />
+						Middle Scope <tt>MyEvent</tt> count: {{count}}
+						<ul>
+							<li ng-repeat="item in [1,2]" ng-controller="EventController">
+								Leaf Scope <tt>MyEvent</tt> count: {{count}}
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/angular.min.js" ></script>
+	<script type="text/javascript" src="../js/app.js" ></script>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app="myServiceModule">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="simple" ng-controller="MyController">
+			<p>Let's try this simple notify service, injected into controller...</p>
+			<input ng-init="message='test'" ng-model="message" />
+			<button type="button" ng-click="callNotify(message);">Notify</button>
+			<p>(you have to click 3 times to see an alert)</p>
+		</div>
+	</body>
+	<script src="../../js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/controllers/ServiceModule.js" type="text/javascript"></script>
+</html>
