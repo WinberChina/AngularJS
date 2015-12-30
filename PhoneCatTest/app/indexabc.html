@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" ng-app="phonecatApp">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Google Phone Gallery</title>
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/app.css">
+		<link rel="stylesheet" href="css/animations.css">
+
+		<script src="js/jquery-1.11.3.js"></script>
+		<script src="js/angular.min.js"></script>
+		<script src="js/angular-animate.js"></script>
+		<script src="js/angular-route.js"></script>
+		<script src="js/angular-resource.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/animations.js"></script>
+		<script src="js/controllers.js"></script>
+		<script src="js/filters.js"></script>
+		<script src="js/services.js"></script>
+	</head>
+
+	<body>
+		<div class="view-container" ng-controller="InitialController">
+			<button type="button" ng-click='newBtn()'>Add</button>
+			<button add-tab>Directive Test</button>
+		</div>
+	</body>
+	<script>
+		var app = angular.module("phonecatApp");
+		app.controller('InitialController', function($scope, $injector) {
+			$scope.newBtn = function() {
+				var $newDiv = $('<div ng-controller="TestCtrl" ng-include="\'partials/phone-detail.html\'">{{demo}}</div>');
+				$injector.invoke(function($compile) {
+					var div = $compile($newDiv);
+					var content = div($scope);
+					$(document.body).append(content);
+				});
+			};
+		});
+		app.controller('TestCtrl', function($scope) {
+			$scope.demo = "This is the div contents";
+		});
+		
+		app.directive('addTab', function($scope) {
+			var $injector = angular.injector();
+			return {
+				link: function(scope, element, attr) {
+					element.on('click', function(e) {
+						var $newDiv = $('<div ng-controller="TestCtrl" ng-include="\'partials/phone-detail.html\'">{{demo}}</div>');
+						$injector.invoke(function($compile) {
+							var div = $compile($newDiv);
+							var content = div($scope);
+							$(document.body).append(content);
+						});
+					});
+				}
+			}
+		});
+	</script>
+
+</html>
